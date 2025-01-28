@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Carousel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .carousel {
+            width: 100vw;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel video {
+            width: 100%;
+            display: none;
+            border: none;
+        }
+
+        .carousel video.active {
+            display: block;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <video id="video1" class="active" src="../assets/videos/vdo0.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+        <video id="video2" src="../assets/videos/vdo1.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+        <video id="video3" src="../assets/videos/vdo2.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+        <video id="video4" src="../assets/videos/vdo3.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+        <video id="video5" src="../assets/videos/vdo4.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+        <div class="controls">
+            <button onclick="playNextVideo()">&#9654;</button>
+        </div>
+    </div>
+
+    <script>
+        const videos = document.querySelectorAll('.carousel video');
+        let currentIndex = 0;
+
+        function playNextVideo() {
+            videos[currentIndex].pause();
+            videos[currentIndex].classList.remove('active');
+
+            currentIndex = (currentIndex + 1) % videos.length;
+
+            const nextVideo = videos[currentIndex];
+            nextVideo.classList.add('active');
+            nextVideo.play();
+
+            nextVideo.onended = () => {
+                nextVideo.currentTime = 0;
+                const nextIndex = (currentIndex + 1) % videos.length;
+                videos[nextIndex].classList.add('active');
+                nextVideo.classList.remove('active');
+            };
+        }
+
+        window.addEventListener('load', () => {
+            const firstVideo = videos[0];
+            firstVideo.play();
+            firstVideo.onended = () => {
+                firstVideo.currentTime = 0;
+                videos[1].classList.add('active');
+                firstVideo.classList.remove('active');
+            };
+        });
+    </script>
+</body>
+</html>

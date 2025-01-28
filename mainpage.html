@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple IN - Airpods</title>
+    <link rel = "icon" href = "assets/images/titleicon.jpg">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d4d4d4;
+        }
+        .parallax-card {
+    perspective: 1000px;
+    width: 300px;
+    height: 500px;
+    position: relative;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-top: 0;
+    border-radius: 15px;
+}
+
+.parallax-card:hover {
+    transform: scale(1.1); /* Hover zoom effect */
+    border-radius: 15px;
+}
+
+
+    
+
+.parallax-card-container{
+    width:auto;
+    display: flex;
+    gap :50px;
+    margin-left: 60px;
+    margin-top: -30px;
+    height: 400px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    border-radius: 15px;
+    animation: shadowAnimationBack 0.6s forwards;
+}
+
+.parallax-card.flipped .card-inner {
+    transform: rotateY(180deg); /* Flip effect */
+    animation: shadowAnimation 0.6s forwards;
+}
+
+
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Shadow shrinks horizontally */
+  }
+  100% {
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.3); /* Normal shadow at the end */
+  }
+}
+@keyframes shadowAnimationBack {
+  0% {
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.3); /* Start with shadow shrinking */
+  }
+  50% {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Shadow restores */
+  }
+  100% {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); /* Normal shadow at the end */
+  }
+}
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 2px;
+    text-align: left;
+    font-size: 13px;
+    
+}
+
+.card-front {
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    background-size: cover;
+  background-position: center;
+}
+
+.card-back {
+    background: rgb(235, 235, 235);
+    transform: rotateY(180deg);
+    color: rgb(63, 63, 63);
+    border-radius: 15px;
+}
+.card-back p{font-size: 15px;
+
+}
+
+
+
+        .navbar {
+            background-color:#FBFBFB ; 
+            height: 55px; 
+            width: 99.2vw;
+            box-shadow: 0px 4px 8.1px rgba(0, 0, 0, 0.25);
+            padding: 0;
+            margin: 0%;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 0.05vw;
+            margin-left: 14vw;
+            margin-top: 0;
+
+        }
+        nav ul li {
+            display: inline;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        nav ul li.no-margin {
+           margin:10px;
+            
+        }
+        main {
+            text-align: center;
+            padding: 20px;
+            margin:0%;
+        }
+        .banner {
+
+            padding: 0;
+            background: black;
+            border-radius: 91px;
+            overflow: hidden;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            align-items: center;
+        }
+        .product-card {
+            padding: 20px;
+            padding-top: 150px;
+            background: linear-gradient(to top, rgba(250, 250, 250, 1) 15%, rgba(250, 250, 250, 0) 100%);
+            border-radius: 15px;
+            box-shadow: 2px 26px 34.2px -27px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            height:350px;
+            width:280px;
+            margin-top:0px;
+            margin-left: 20px;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+        }
+        
+        .product-name {
+            font-size: 1.5em;
+            margin-top: 30px;
+
+        }
+        .price {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .description {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        footer {
+            background: #f4f4f4;
+            padding: 20px;
+            padding-bottom: 50px;
+            text-align: center;
+            margin-top: 200px;
+            color:#494949;
+            box-shadow: 3px -1px 8.1px rgba(0, 0, 0, 0.25);
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding-top: 20px;
+            text-align:left;
+        }
+        .footer-links p{
+            margin-left: 100px;
+            text-align:left;
+            font-size: 12px;
+        }
+        .footer-links h4{
+            margin-left: 100px;
+            text-align:left;
+            font-size: 12px;
+        }
+        .carousel {
+            width: 100vw;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .carousel video {
+            width: 100%;
+            border-radius: 91px;
+            display: none;
+            border: none;
+        }
+
+        .carousel video.active {
+            display: block;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            outline: none;
+        }
+        .play-pause-button {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .play-pause-button:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: black;
+    }
+    .colorpod {
+        background-color: #f6f6f6;
+        width: 100vw;
+        height:200px;
+        border-radius: 50px;
+        box-shadow: 0px 4px 8.1px rgba(0, 0, 0, 0.25);
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 30px;
+            font-weight:500;
+            
+    }
+    .colorpod p {
+    font-size: 200px;
+    padding: 0;
+    margin: -45px;
+    letter-spacing: 24px;
+    color: #363636;
+  }
+  .colorpod img {
+    position: absolute;
+    top: 4.5vh;
+    left: 45vw;
+    z-index: 1;
+    height: 180px;
+    margin: -35px;
+}
+.productdiv{
+    background-color: #EAEAEA;
+        width: 100vw;
+        height:auto;
+        border-radius: 50px;
+        box-shadow: 0px 4px 8.1px rgba(0, 0, 0, 0.25);
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 30px;
+            align-items: center;
+            padding-bottom: 50px;
+            padding-top: 25px;
+            
+}
+.buybutton{
+    background-color: #3F82FF;
+    border: none;
+    height: 30px;
+    width: 75px;
+    color: white;
+    border-radius: 1000px;
+    transition: all 0.5s ease;
+}
+.buybutton:hover{
+    background-color: #206eff;
+}
+.learnmore{
+    margin-top: 10px;;
+    color:#3F82FF;
+    background:none;
+    border: none;
+}
+.learnmore:hover{
+    text-decoration:underline;
+}
+.cards{
+    color: #363636;
+    width:100vw;
+    height:400px;
+    margin-top: 70px;
+    margin-left: -30px;
+    padding-top: 0px;
+   
+}
+.navbuttons{
+    padding: 14px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 1px solid transparent;
+    transition: all 0.5s ease;
+}
+.navbuttons:hover{
+    border-left: 1px solid rgb(177, 177, 177);
+    border-right: 1px solid rgb(177, 177, 177);
+}
+.animecard {
+      width: 200px;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      padding-left: 50px;
+      padding-right: 50px;
+      background-size: 80%;
+      background-repeat: no-repeat;
+      margin-top: -150px;
+      margin-left: -10px;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class = "navbar">
+               
+            <ul>
+                <li class = "no-margin"><div style = "width: 100px;"><img src = "assets/images/applelogo.webp" style = "height :31px;padding-top: -5vh;"></div></li>
+                <li><div class = "navbuttons">Store</div></li>
+                <li><div class = "navbuttons">iPad</div></li>
+                <li><div class = "navbuttons">Mac</div></li>
+                <li><div class = "navbuttons">iPhone</div></li>
+                <li><div class = "navbuttons">Watch</div></li>
+                <li><div class = "navbuttons">TV & Home</div></li>
+                <li><div class = "navbuttons">Entertainment</div></li>
+                <li><div class = "navbuttons">Support</div></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div class="carousel">
+                <video id="video1" class="active" src="assets/videos/vdo0.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+                <video id="video2" src="assets/videos/vdo1.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+                <video id="video3" src="assets/videos/vdo2.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+                <video id="video4" src="assets/videos/vdo3.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+                <video id="video5" src="assets/videos/vdo4.mp4" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" muted></video>
+                <button id="playPauseBtn" class="play-pause-button">Pause</button>
+                
+            </div>
+        </section>
+
+        <section>
+            <div class = "colorpod">
+                <img src = "assets/images/cpgif.gif">
+            <p>ColorPodsPro</p>
+            </div>
+        </section>
+        <section>
+            <div class = "productdiv">
+            <div class="products">
+                <div class="product-card">
+                    <div class="animecard"></div>
+                    <div class="product-name">Crimson Red</div>
+                    <div class="description">"Feel the beat, live the passion."</div>
+                    <div class="price">₹24,900.00*</div>
+                    <button class = "buybutton">Buy</button><br>
+                    <button class = "learnmore">Learn More ></button>
+                </div>
+                <div class="product-card">
+                    <div class="animecard"></div>
+                    <div class="product-name">Crimson Red</div>
+                    <div class="description">"Vibrance in every note."</div>
+                    <div class="price">₹24,800.00*</div>
+                    <button class = "buybutton">Buy</button><br>
+                    <button class = "learnmore">Learn More ></button>
+                </div>
+                <div class="product-card">
+                    <div class="animecard"></div>
+                    <div class="product-name">Arctic Blue</div>
+                    <div class="description">"Cool tones, powerful sound."</div>
+                    <div class="price">₹25,900.00*</div>
+                    <button class = "buybutton">Buy</button><br>
+                    <button class = "learnmore">Learn More ></button>
+                </div>
+                <div class="product-card">
+                    <div class="animecard"></div>
+                    <div class="product-name">Mystic Violet</div>
+                    <div class="description">"A rich blend of style and clarity."</div>
+                    <div class="price">₹24,700.00*</div>
+                    <button class = "buybutton">Buy</button><br>
+                    <button class = "learnmore">Learn More ></button>
+                </div>
+                <div class="product-card">
+                    <div class="animecard"></div>
+                    <div class="product-name">Mint Surge</div>
+                    <div class="description">"Fresh sound, bold color."</div>
+                    <div class="price">₹22,900.00*</div>
+                    <button class = "buybutton">Buy</button><br>
+                    <button class = "learnmore">Learn More ></button>
+                </div>
+            </div>
+            </div>
+        </section>
+        <br>
+        <section>
+            <div class = "cards">
+                <section>
+                    <h2>Get to know AirPods</h2>
+                    <div class="info">
+                        <p>Explore features, styles, and more with the new AirPods.</p>
+                    </div>
+                </section><br>
+                <section class="parallax-card-container">
+                    <div class="cards">
+                        <div class="parallax-card-container">
+                          <div class="parallax-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                              <div class="card-front" style = "background-image: url('assets/images/card1.jpg');">
+                                <p style ="margin-left:10px;">Active Noise Cancellation</p>
+                                <h2 style ="margin-left:10px;font-weight: 600;">Control what you hear. And what you don’t.</h2>
+                                
+                              </div>
+                              <div class="card-back">
+                                <h2 style ="margin-left:10px;">Active Noise Cancellation</h2>
+                                <p style ="margin-left:10px;">Active Noise Cancellation reduces unwanted sounds so you can immerse yourself in what you’re listening to or simply stay focused. And Transparency mode lets you comfortably hear the world around you.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="parallax-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                              <div class="card-front" style = "background-image: url('assets/images/card2.jpg');">
+                                
+                                <p style ="margin-left:10px;">Personalised Spatial Audio</p>
+                                <h2 style ="margin-left:10px;font-weight: 600;">Immersive sound. Fine‑tuned<br> to you.</h2>
+                              </div>
+                              <div class="card-back">
+                                <h2 style ="margin-left:10px;">Personalised Spatial Audio</h2>
+                                <p style ="margin-left:10px;">Personalised Spatial Audio2 brings you 3D sound suited to your specific ear shape for a theatre-like experience that surrounds you with sound.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="parallax-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                              <div class="card-front" style = "background-image: url('assets/images/card3.jpg');">
+                                
+                                <p style ="margin-left:10px;">Hearing Health</p>
+                                <h2 style ="margin-left:10px;font-weight: 600;">Minimise your exposure to <br>loud noise.</h2>
+                              </div>
+                              <div class="card-back">
+                                <h2 style ="margin-left:10px;">Hearing Health</h2>
+                                <p style ="margin-left:10px;">AirPods Pro 2 includes Hearing Health features like Loud Sound Reduction, Conversation Boost and Background Sounds.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="parallax-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                              <div class="card-front" style = "background-image: url('assets/images/card4.png');background-size: contain;background-color: black;background-repeat: no-repeat;">
+                                
+                                <p style ="margin-left:10px;">Siri</p>
+                                <h2 style ="margin-left:10px;font-weight: 600;">Your always-on intelligent assistant.</h2>
+                              </div>
+                              <div class="card-back">
+                                <h2 style ="margin-left:10px;">Siri</h2>
+                                <p style ="margin-left:10px;">Control your audio, get directions, check the weather and more with a simple “Hey Siri”. With Announce Notifications, Siri can automatically read important notifications as they arrive. And with Siri Interactions, you can nod your head yes or shake your head no when Siri asks if you’d like to hear a message, answer a call or manage other notifications.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="parallax-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                              <div class="card-front" style = "background-image: url('assets/images/untitled.png');">
+                                
+                                <p style ="margin-left:10px;">Magical Experience</p>
+                                <h2 style ="margin-left:10px;font-weight: 600;">Simply effortless.</h2>
+                              </div>
+                              <div class="card-back">
+                                <h2 style ="margin-left:10px;">Magical Experience</h2>
+                                <p style ="margin-left:10px;">With magically effortless features like one-tap setup, Automatic Switching,5 Audio Sharing and more, AirPods make the listening experience completely fluid day to day, device to device.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                      
+                 </section>
+
+       
+    </main>
+<br><br><br>
+    <footer>
+        <div class="footer-links">
+            <div>
+                <h4>Shop and Learn</h4>
+                <p>Store</p>
+                <p>Mac</p>
+                <p>iPad</p>
+                <p>iPhone</p>
+                <p>Watch</p>
+            </div>
+            <div>
+                <h4>Account</h4>
+                <p>Manage Your Apple Account</p>
+                <p>Apple Store Account</p>
+                <p>iCloud.com</p>
+                <p>iPad</p>
+                <p>iPhone</p>
+                <p>Watch</p>
+                <h4>Entertainment</h4>
+                <p>Apple One</p>
+                <p>Apple TV+</p>
+                <p>Apple Music</p>
+                <p>Apple Arcade</p>
+                <p>Apple podcasts</p>
+                <p>Apple Books</p>
+                <p>App Store</p>
+            </div>
+            <div>
+                <h4>Apple Store</h4>
+                <p>Find a Store</p>
+                <p>Genius Bar</p>
+                <p>Today at Apple</p>
+                <p>Group Reservations</p>
+                <p>Apple Camp</p>
+                <p>Apple Trade in</p>
+                <p>Ways to Buy</p>
+                <p>Recycling Programme</p>
+                <p>Order Status</p>
+                <p>Shopping help</p>
+            </div>
+            <div>
+                <h4>For Business</h4>
+                <p>Apple and Business</p>
+                <p>Shop for Business</p>
+                <h4>For Education</h4>
+                <p>Apple and Business</p>
+                <p>Apple and Education</p>
+                <p>Shop for Education</p>
+                <p>Shop for University</p>
+                <h4>For Healthcare</h4>
+                <p>Apple in Healthcare</p>
+                <p>Mac in Healthcare</p>
+                <p>Health on Apple Watch</p>
+            </div>
+            <div>
+                <h4>Apple Values</h4>
+                <p>Accessibility</p>
+                <p>Education</p>
+                <p>Environment</p>
+                <p>Privacy</p>
+                <p>Supply Chain</p>
+                
+                <h4>About Apple</h4>
+                <p>Newsroom</p>
+                <p>Apple Leadership</p>
+                <p>Career Oppurtunities</p>
+                <p>Investors</p>
+                <p>Ethics & Compliance</p>
+                <p>Events</p>
+                <p>Contact Apple</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const videos = document.querySelectorAll('.carousel video');
+        const card = document.querySelector('.animecard');
+    const totalFrames = 40; // Total number of frames per card
+    const frameImages = {}; // Object to store preloaded images for each card
+
+    // Preload all frames for a specific card
+    function preloadFrames(cardNumber) {
+      return new Promise((resolve) => {
+        frameImages[cardNumber] = [];
+        let loadedCount = 0;
+        for (let i = 1; i <= totalFrames; i++) {
+          const img = new Image();
+          img.src = `./assets/pcard${cardNumber}/00${i}.png`; // Different folder for each card
+          frameImages[cardNumber].push(img);
+
+          // Track when all images are loaded
+          img.onload = () => {
+            loadedCount++;
+            if (loadedCount === totalFrames) {
+              resolve();
+            }
+          };
+        }
+      });
+    }
+
+    // Set frame background for a card
+    function setFrame(card, frame, cardNumber) {
+      card.style.backgroundImage = `url('./assets/pcard${cardNumber}/00${frame}.png')`;
+    }
+
+    // Initialize animation for a specific card
+    function initializeCard(card, cardNumber) {
+      let currentFrame = 1;
+      let animationRequest;
+
+      function animateForward() {
+        if (currentFrame < totalFrames) {
+          currentFrame++;
+          setFrame(card, currentFrame, cardNumber);
+          animationRequest = requestAnimationFrame(animateForward);
+        } else {
+          cancelAnimationFrame(animationRequest);
+        }
+      }
+
+      function animateBackward() {
+        if (currentFrame > 1) {
+          currentFrame--;
+          setFrame(card, currentFrame, cardNumber);
+          animationRequest = requestAnimationFrame(animateBackward);
+        } else {
+          cancelAnimationFrame(animationRequest);
+        }
+      }
+
+      card.addEventListener('mouseenter', () => {
+        cancelAnimationFrame(animationRequest); // Stop any ongoing backward animation
+        animationRequest = requestAnimationFrame(animateForward);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(animationRequest); // Stop any ongoing forward animation
+        animationRequest = requestAnimationFrame(animateBackward);
+      });
+
+      setFrame(card, 1, cardNumber); // Set default frame
+    }
+
+    // Preload frames and initialize all cards
+    async function init() {
+      const cards = document.querySelectorAll('.animecard');
+      for (let i = 0; i < cards.length; i++) {
+        const cardNumber = i + 1;
+        const card = cards[i];
+        await preloadFrames(cardNumber); // Preload frames for each card
+        initializeCard(card, cardNumber); // Initialize animation for each card
+      }
+    }
+
+    window.addEventListener('load', init);
+let currentIndex = 0;
+let isPlaying = true; // To track whether the videos are currently playing
+let videoInterval; // This will hold the interval ID for controlling the video cycling
+
+// Get the play/pause button
+const playPauseButton = document.getElementById('playPauseBtn');
+
+// Function to play the next video
+function playNextVideo() {
+    const currentVideo = videos[currentIndex];
+    currentVideo.pause();
+    currentVideo.classList.remove('active');
+    currentVideo.currentTime = 0; // Reset the time before switching
+    currentVideo.style.display = 'none'; // Hide the current video
+
+    currentIndex = (currentIndex + 1) % videos.length;
+    const nextVideo = videos[currentIndex];
+    nextVideo.classList.add('active');
+    nextVideo.style.display = 'block'; // Show the next video
+    nextVideo.play();
+}
+
+// Function to stop the carousel after all videos have been played
+function stopCarousel() {
+    clearInterval(videoInterval);
+}
+
+// Play/pause button toggle function
+function togglePlayPause() {
+    if (isPlaying) {
+        // Pause the current video and stop the interval
+        const currentVideo = videos[currentIndex];
+        currentVideo.pause();
+        playPauseButton.textContent = 'Play'; // Change button text to "Play"
+        isPlaying = false; // Set to false (paused)
+        clearInterval(videoInterval); // Stop video cycling
+    } else {
+        // Play the current video and restart the interval
+        const currentVideo = videos[currentIndex];
+        currentVideo.play();
+        playPauseButton.textContent = 'Pause'; // Change button text to "Pause"
+        isPlaying = true; // Set to true (playing)
+        videoInterval = setInterval(() => {
+            playNextVideo();
+        }, 3000); // Restart video cycling
+    }
+}
+
+// Event listener for play/pause button
+playPauseButton.addEventListener('click', togglePlayPause);
+
+window.addEventListener('load', () => {
+    // Initially display the first video
+    videos[currentIndex].classList.add('active');
+    videos[currentIndex].style.display = 'block';
+    videos[currentIndex].play();
+
+    // Create an interval to change the video every 3 seconds
+    videoInterval = setInterval(() => {
+        playNextVideo();
+    }, 3000); // Switch videos every 3 seconds
+
+    // Stop the carousel after the last video finishes
+    videos[videos.length - 1].addEventListener('ended', () => {
+        stopCarousel(); // Stop the interval when the last video ends
+    });
+});
+
+    </script>
+    
+    
+</body>
+</html>
